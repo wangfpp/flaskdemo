@@ -6,17 +6,18 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="static/css/list.css">
     <script src="static/js/jquery-3.4.1.min.js"></script>
-    <!-- <title>{{ title }}</title> -->
+    <title>{{ title }}</title>
 </head>
 <body>
     <h3>列表循环</h3>
    <div class="lietcontainer">
     {% for item in list %}
         {% set outer_loop = loop %}
+        {% set children = item["childrens"] %}
             <div class="list_item {{'selected' if item.name == curr}}" index={{outer_loop.index}} name={{item.name}}>这是第 {{ outer_loop.index }}个span {{item.name}}
-                {% if item["childrens"] | count > 0 %}
+                {% if children | count > 0 %}
                     <div class="children">
-                        {% for child in item["childrens"]%}
+                        {% for child in children %}
                             <p class="child_item {{'selected' if item.name == curr}}" >{{child}}</p>
                         {% endfor %}
                     </div>
@@ -27,6 +28,15 @@
    <div class="select_container">
     {{curr}}
    </div>
+
+   <div class="select_container">
+        {% raw %}
+            {{raw}}忽略模板语法<br>
+            {% for intm in list%}<br>
+            {% endfor %}<br>
+        {% endraw %}
+    </div>
+    <a href="./upload">上传个文件吧</a>
 </body>
 </html>
 <script src="static/js/list.js"></script>
