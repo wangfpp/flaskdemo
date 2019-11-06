@@ -14,7 +14,9 @@ def index():
 def list_name():
     method = request.method
     selectitem = 'app'
-    lista= ["app", "Python", "Electron", "Shell"]
+    lista= [{"title": 'app', "name": 'app', "desc": 'peoject', "childrens": []},
+                 {"title": 'Vue', "name": 'Vue', "desc": '前端项目框架', "childrens": ['route', 'vuex']},
+                 {"title": 'ReactNative', "name": 'ReactNative', "desc": '媲美原生应用的App框架', "childrens": ['JSBridge', 'Route', 'Storage']}]
     if method == 'GET':
         return render_template('list.html', title="列表循环", list=lista, curr=selectitem)
     elif method == 'POST':

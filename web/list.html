@@ -6,18 +6,22 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="static/css/list.css">
     <script src="static/js/jquery-3.4.1.min.js"></script>
-    <title>{{ title }}</title>
+    <!-- <title>{{ title }}</title> -->
 </head>
 <body>
     <h3>列表循环</h3>
    <div class="lietcontainer">
     {% for item in list %}
         {% set outer_loop = loop %}
-        {% if item == curr  %}
-            <p class="list_item selected" index={{outer_loop.index}} name={{item}}>这是第 {{ outer_loop.index }}个span {{item}}</p>
-        {% else %}
-            <p class="list_item" index={{outer_loop.index}} name={{item}}>这是第 {{ outer_loop.index }}个span {{item}}</p>
-        {% endif %}
+            <div class="list_item {{'selected' if item.name == curr}}" index={{outer_loop.index}} name={{item.name}}>这是第 {{ outer_loop.index }}个span {{item.name}}
+                {% if item["childrens"] | count > 0 %}
+                    <div class="children">
+                        {% for child in item["childrens"]%}
+                            <p class="child_item {{'selected' if item.name == curr}}" >{{child}}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+                </div>
     {% endfor %}
    </div>
    <div class="select_container">

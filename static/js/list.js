@@ -4,8 +4,10 @@ document.onload = function() {
         node.onclick = function() {
             // $(this).siblings().removeClass('selected');
             // $(this).addClass('selected');
+            $(this).children('.children').css({display: 'block'});
             let name = $(this).attr('name'),
             index = $(this).attr('index');
+            let _self = $(this);
             $.ajax({
                 method: 'POST',
                 url:'/list',
@@ -18,6 +20,7 @@ document.onload = function() {
                     console.log(err);
                 }
             })
+            
         }
     })
 }()

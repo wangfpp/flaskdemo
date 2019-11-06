@@ -9,3 +9,13 @@
     width: 200px;
     border-top: 2px dashed slategray;
 }
+.children{
+    display: none;
+}
+.selected .children{
+    display: block;
+}
+
+.selected .children .selected{
+    color: blueviolet;
+}
