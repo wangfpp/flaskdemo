@@ -1,0 +1,11 @@
+.list_item{
+    cursor: pointer;
+}
+.list_item.selected{
+    color: tomato
+}
+.select_container{
+    margin-top: 20px;
+    width: 200px;
+    border-top: 2px dashed slategray;
+}
