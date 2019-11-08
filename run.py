@@ -11,10 +11,17 @@ UPLOAD_FOLDER = "upload"
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 base_dir = os.path.abspath(os.path.dirname(__file__))
 
+def list2str(list_val, sym):
+    return sym.join(list_val)
+
 ## 首页路由
 @app.route('/')
 def index():
-    return render_template('index.html', name="wangfpp")
+    name= {"name": "wangfpp"}
+    title={"title": "首页"}
+    hobby={"hobby": ['Study', "Game", "Girl"]}
+    info = {**name, **title, **hobby}
+    return render_template('index.html', info=info)
 
 ## 列表页路由
 @app.route('/list', methods=['GET', 'POST'])
@@ -28,7 +35,6 @@ def list_name():
         return render_template('list.html', title="列表循环", list=lista, curr=selectitem)
     elif method == 'POST':
         req_dict = request.form.to_dict()
-        print(req_dict["name"])
         return render_template('list.html', title="列表循环", list=lista, curr=req_dict["name"])
 
 ## 上传文件
@@ -48,4 +54,5 @@ def upload():
 
 if __name__ == '__main__':
     app.debug = True
+    app.add_template_filter(list2str, "list2str")
     app.run(host="0.0.0.0", port=8088)
