@@ -31,8 +31,14 @@ document.onload = function() {
     function onprogress(e) {
         if (e.lengthComputable) {
             let percent = parseInt((e.loaded / e.total) * 100)
-            let total =  (100 - percent - 10) / 100
-            $('input').css({'background-image': `linear-gradient(to right,  #52c41a ${percent}%, #f5f5f5 ${total}%)`})
+            let total =  (100 - percent - 10) / 100;
+            $('input').css({'background-image': `linear-gradient(to right,  #52c41a ${percent}%, #f5f5f5 ${total}%)`});
+            $(`.percent_content`).html(`${percent}%`).css({display: 'block'})
+            if (percent >= 100) {
+                $(`.percent_content`).css({display: 'none'});
+                $(`svg`).css({display: 'block'});
+            }
         }
     }
+    
 }()
