@@ -11,6 +11,11 @@ UPLOAD_FOLDER = "upload"
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 base_dir = os.path.abspath(os.path.dirname(__file__))
 
+# 自定义的过滤器
+'''
+dict　value拼接
+list_val: Dict
+'''
 def list2str(list_val, sym):
     return sym.join(list_val)
 
@@ -55,4 +60,4 @@ def upload():
 if __name__ == '__main__':
     app.debug = True
     app.add_template_filter(list2str, "list2str")
-    app.run(host="0.0.0.0", port=8088)
+    app.run(host="0.0.0.0", port=8089)

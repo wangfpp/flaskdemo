@@ -4,11 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./static/css/index.css">
     <title>{{info.title}}</title>
 </head>
 <body>
     {% set name = info.name%}
-    <p name="{{name}}">我的名字是: {{name}}</p>
+    <p name="{{name}}" class="{{'name' if name == 'wangfpp'}}">
+        我的名字是: {{name}}
+    </p>
     <p>我的爱好: {{info.hobby | list2str("&&")}}</p>
 </body>
 </html>
+
+<script type="text/javascript">
+let btn = document.createElement('button');
+btn.innerHTML = "列表页";
+btn.setAttribute('class', 'btn jump');
+btn.setAttribute('style',"color: blue; cursor: pointer");
+btn.onclick = function(e) {
+    e.stopPropagation();
+    window.location.href = './list'
+}
+document.body.appendChild(btn);
+</script>

@@ -8,7 +8,7 @@
 ```bash
     cd 到项目目录
     pip install -r requirements.txt
-    python run.py
+    python3 run.py
 ```
 ## 功能
 - 1. 列表判断循环
